@@ -1,3 +1,4 @@
+
 const drumButtons = document.querySelectorAll(".drum");
 
 for (let i = 0; i < drumButtons.length; i++) {
@@ -10,17 +11,27 @@ for (let i = 0; i < drumButtons.length; i++) {
 
     buttonAnimation(buttonInnerHTML);
 
+
+
   });
 
 }
 
-document.addEventListener("keyup", function(event) {
+document.addEventListener("keydown", function(event) { // keydown removes delay
+  if (!event.repeat)  { // removes sound spamming
+    makeSound(event.key);
+  
+    buttonAnimation(event.key);
+  }
+  
+  });
 
-  makeSound(event.key);
-
-  buttonAnimation(event.key);
-
-});
+  document.addEventListener("keyup", function(event) {
+    const currentKey = event.key;
+    const activeButton = document.querySelector("." + currentKey);
+    activeButton.classList.remove("pressed"); // removes "pressed" style after keyup event
+  
+  });
 
 
 function makeSound(key) {
@@ -73,3 +84,4 @@ function buttonAnimation(currentKey) {
 
   activeButton.classList.add("pressed");
 }
+
