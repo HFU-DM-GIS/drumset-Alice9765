@@ -69,3 +69,54 @@ h1 {
     margin: 10px;
     background-color: white;
 }
+
+.recWrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.recWrap button {
+    margin: 0 5px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#bpm {
+    height: 5px;
+    width: 40px;
+    padding: 20px;
+    border-radius: 50px;
+    margin: 0 5px;
+}
+
+#bpm:focus-visible {
+    outline: none;
+}
+
+.recWrap p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 3rem;
+    color: #404B69;
+    margin: 0 5px;
+}
+
+.rec {
+    background-color: red;
+}
+
+.rec.active {
+    background-color: green;
+}
+
+.del i {
+    font-size: 1.5rem;
+}
+
+.play i {
+    font-size: 1.2rem;
+}
