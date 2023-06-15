@@ -4,6 +4,7 @@
 <head>
 	<title>The Drum Kit</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="script.js" defer></script>
 </head>
 
@@ -19,6 +20,14 @@
         <button class="l drum">l</button>
         <button class="i drum">i</button>
     </div>
+    <div class="recWrap">
+        <button class="del"><i class="fa fa-trash-o"></i></button>
+        <button class="rec">REC</button>
+        <button class="play"><i class="fa fa-play"></i></button>
+        <input id="bpm" type="number" min="10" max="200" value="80">
+        <p>BPM</p>
+    </div>
+    <div id="fact"></div>
 </body>
 
 </html>
