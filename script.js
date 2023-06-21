@@ -23,11 +23,16 @@ const delButton = document.querySelector(".del")
 
 const playButton = document.querySelector(".play")
 
+let recordedSongs = [];
+
 recButton.addEventListener("click", function () {
   if (rec) {
     rec = false
     recButton.classList.remove("active")
     console.log(recSounds)
+    recordedSongs.push(recSounds.slice());
+    displayRecordings();
+    recSounds = [];
   } else {
     rec = true
     recButton.classList.add("active")
@@ -166,3 +171,96 @@ function buttonAnimation(currentKey) {
   }
 }
 
+const recordingsList = document.getElementById("recordingsList");
+
+function displayRecordings() {
+  recordingsList.innerHTML = "";
+  recordedSongs.forEach((recording, index) => {
+    const recordingItem = document.createElement("li");
+    recordingItem.innerText = `Aufnahme ${index + 1}`;
+
+    const playButton = document.createElement("button");
+    playButton.innerText = "Play";
+    playButton.addEventListener("click", function () {
+      playRecording(recording);
+    });
+
+    recordingItem.appendChild(playButton);
+    recordingsList.appendChild(recordingItem);
+  });
+}
+
+let recordings = [];
+let mediaRecorders = [];
+
+function startRecording(key) {
+  const mediaRecorder = new MediaRecorder(stream);
+  const chunks = [];
+
+  mediaRecorder.addEventListener('dataavailable', (event) => {
+    chunks.push(event.data);
+  });
+
+  mediaRecorder.addEventListener('stop', () => {
+    const recording = new Blob(chunks, { type: 'audio/webm' });
+    chunks.length = 0;
+    addRecording(key, recording);
+  });
+
+  mediaRecorders.push(mediaRecorder);
+  mediaRecorder.start();
+}
+
+function stopRecording() {
+  if (mediaRecorders.length > 0) {
+    const mediaRecorder = mediaRecorders.pop();
+    mediaRecorder.stop();
+  }
+}
+
+function playRecording(recording) {
+  if (soundsPlay.length > 0) {
+    soundsPlay.forEach((sound) => sound.pause());
+    soundsPlay = [];
+  }
+
+  let bpm = document.querySelector('#bpm').value;
+  let milSecs = 60 / bpm * 1000;
+
+  let index = 0;
+  const playNextSound = () => {
+    if (index >= recording.length) {
+      stopPlayback();
+      return;
+    }
+
+    const soundKey = recording[index];
+    const path = keySounds[soundKey];
+    const sound = new Audio(path);
+    soundsPlay.push(sound);
+
+    sound.play();
+
+    sound.addEventListener('ended', () => {
+      index++;
+      playNextSound();
+    });
+  };
+
+  const stopPlayback = () => {
+    play = false;
+    let icon = document.querySelector(".play .fa");
+    icon.classList.remove("fa-pause");
+    icon.classList.add("fa-play");
+    soundsPlay.forEach((sound) => sound.pause());
+    soundsPlay = [];
+  };
+
+  if (!play) {
+    let icon = document.querySelector(".play .fa");
+    icon.classList.remove("fa-play");
+    icon.classList.add("fa-pause");
+    play = true;
+    playNextSound();
+  }
+}
