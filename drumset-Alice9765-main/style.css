@@ -1,0 +1,135 @@
+body {
+    text-align: center;
+    background-color: #a06060;
+}
+
+h1 {
+    font-size: 5rem;
+    color: #DBEDF3;
+    font-family: sans-serif;
+    text-shadow: 3px 0 #DA0463;
+
+}
+h2{
+    font-size: 2rem;
+    color: #000000;
+    font-family: sans-serif;
+
+}
+.playButton{
+    font-size: 1rem;
+    color: #000000;
+    font-family: sans-serif;
+
+}
+
+.w {
+    background-image: url("images/tom1.png");
+}
+
+.a {
+    background-image: url("images/tom2.png");
+}
+
+.s {
+    background-image: url("images/tom3.png");
+}
+
+.d {
+    background-image: url("images/tom4.png");
+}
+
+.j {
+    background-image: url("images/snare.png");
+}
+
+.k {
+    background-image: url("images/crash.png");
+}
+
+.l {
+    background-image: url("images/kick.png");
+}
+
+.i {
+    background-image: url()
+}
+
+.set {
+    margin: 10% auto;
+}
+
+.pressed {
+    box-shadow: 0 3px 4px 0 #DBEDF3;
+    opacity: 0.5;
+}
+
+.drum {
+    outline: none;
+    border: 10px solid #404B69;
+    font-size: 5rem;
+    font-family: 'Arvo', cursive;
+    line-height: 2;
+    font-weight: 900;
+    color: #DA0463;
+    text-shadow: 3px 0 #DBEDF3;
+    border-radius: 15px;
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    text-align: center;
+    margin: 10px;
+    background-color: white;
+}
+
+.recWrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.recWrap button {
+    margin: 0 5px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#bpm {
+    height: 5px;
+    width: 40px;
+    padding: 20px;
+    border-radius: 50px;
+    margin: 0 5px;
+}
+
+#bpm:focus-visible {
+    outline: none;
+}
+
+.recWrap p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 3rem;
+    color: #404B69;
+    margin: 0 5px;
+}
+
+.rec {
+    background-color: red;
+}
+
+.rec.active {
+    background-color: green;
+}
+
+.del i {
+    font-size: 1.5rem;
+}
+
+.play i {
+    font-size: 1.2rem;
+}
+
