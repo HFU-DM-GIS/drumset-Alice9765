@@ -10,6 +10,18 @@ h1 {
     text-shadow: 3px 0 #DA0463;
 
 }
+h2{
+    font-size: 2rem;
+    color: #000000;
+    font-family: sans-serif;
+
+}
+.playButton{
+    font-size: 1rem;
+    color: #000000;
+    font-family: sans-serif;
+
+}
 
 .w {
     background-image: url("images/tom1.png");
@@ -120,4 +132,3 @@ h1 {
 .play i {
     font-size: 1.2rem;
 }
-
